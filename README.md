@@ -15,5 +15,10 @@
 - b4: open Mackage Manager Console
   - Add-Migration Initial
   - if success + "update-database" 
+## How to create data seeding
+- Create folder Extensions
+- Created class ModelBuilderExtensions
+- https://www.learnentityframeworkcore.com/migrations/seeding
+- Open PM console -> add-migration SeedData -> update-database
 ## How to configure and run
 ## How to contribute
