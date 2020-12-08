@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eShopSolution.Data.EF;
 
 namespace eShopSolution.Data.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    partial class EShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201207162410_AddProductImageTable")]
+    partial class AddProductImageTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,7 +182,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("5d5087a7-94b6-458c-b8dc-6c5449c42810"),
-                            ConcurrencyStamp = "cce5b2c7-151b-47ec-8df3-50f7ff35536b",
+                            ConcurrencyStamp = "a6d3f770-f09f-46ce-ba57-63d9da81778f",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -257,7 +259,7 @@ namespace eShopSolution.Data.Migrations
                         {
                             Id = new Guid("e6d35cf0-aa91-46ab-a880-1133ca8b99a8"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ac342e3c-7f7e-4ee9-9729-464d3e8dff63",
+                            ConcurrencyStamp = "9ea0bcf1-ba59-495e-88b9-4b40eae06af8",
                             DoB = new DateTime(2020, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "sangtp@gmail.com",
                             EmailConfirmed = true,
@@ -266,7 +268,7 @@ namespace eShopSolution.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "sangtp@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEWOT46rSCSntBVfuN5p+avTaxNBOARzBcKiPNhMDQj2etNlafQ6Aqgvi0hNBlfv+g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH6WmtpMzFaS+BzCQT4hmgN9HcrnYYSLhgFPdqXEiT8/7chNHy2OZvEWZm5poaloJQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -612,7 +614,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2020, 12, 8, 1, 53, 21, 994, DateTimeKind.Local).AddTicks(5914),
+                            DateCreated = new DateTime(2020, 12, 7, 23, 24, 9, 37, DateTimeKind.Local).AddTicks(2236),
                             OriginalPrice = 120000m,
                             Price = 150000m,
                             Stock = 0,
@@ -637,23 +639,22 @@ namespace eShopSolution.Data.Migrations
                     b.Property<long>("FileSize")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
+                    b.Property<int>("ImagePath")
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDefault")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int>("SortOrder")
                         .HasColumnType("int");
 
-                    b.Property<int>("SortOrder")
+                    b.Property<int>("productId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("productId");
 
                     b.ToTable("ProductImages");
                 });
@@ -911,7 +912,7 @@ namespace eShopSolution.Data.Migrations
                 {
                     b.HasOne("eShopSolution.Data.Entities.Product", "Product")
                         .WithMany("ProductImages")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
