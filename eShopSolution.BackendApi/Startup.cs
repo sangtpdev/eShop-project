@@ -47,8 +47,7 @@ namespace eShopSolution.BackendApi
             //Declare DI
             services.AddTransient<IStorageService, FileStorageService>();
 
-            services.AddTransient<IPublicProductService, PublicProductService>();
-            services.AddTransient<IManageProductService, ManageProductService>();
+            services.AddTransient<IProductService, ProductService>();
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
@@ -152,6 +151,8 @@ namespace eShopSolution.BackendApi
 
             app.UseRouting();
 
+            app.UseAuthorization();
+
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
@@ -159,9 +160,7 @@ namespace eShopSolution.BackendApi
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 c.RoutePrefix = string.Empty;
             });
-
-            app.UseAuthorization();
-
+     
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -47,7 +47,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Đăng nhập </h1>
                                     </div>
-                                    <form class="user" asp-action="Login" asp-controller="User" method="post">
+                                    <form class="user" asp-action="Index" asp-controller="Login" method="post">
                                         <div class="form-group">
                                             <input type="text" asp-for="UserName" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                         </div>
@@ -75,7 +75,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="/User/ForgotPassword">Forgot Password?</a>
+                                        <a class="small" href="/User/ForgotPassword">Bạn quên mật khẩu?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="/User/RegisterNew">Tạo mới tài khoản</a>
                                     </div>
                                 </div>
                             </div>
@@ -102,3 +105,4 @@
 </body>
 
 </html>
+
