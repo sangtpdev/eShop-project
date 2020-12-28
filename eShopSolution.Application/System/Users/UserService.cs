@@ -70,6 +70,7 @@ namespace eShopSolution.Application.System.Users
             var userVm = new UserVm()
             {
                 Email = user.Email,
+                UserName = user.UserName,
                 PhoneNumber = user.PhoneNumber,
                 FirstName = user.FirstName,
                 DoB = user.DoB,
@@ -108,7 +109,9 @@ namespace eShopSolution.Application.System.Users
             // Select and projection
             var pagedResult = new PagedResult<UserVm>()
             {
-                TotalRecord = totalRow,
+                TotalRecords = totalRow,
+                PageIndex = request.PageIndex,
+                PageSize = request.PageSize,
                 Items = data
             };
             return new ApiSuccessResult<PagedResult<UserVm>>(pagedResult);
