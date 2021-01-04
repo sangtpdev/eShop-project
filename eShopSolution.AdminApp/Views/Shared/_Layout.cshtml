@@ -25,12 +25,12 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-      
+
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="list-style: none;">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html" >
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -137,7 +137,7 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block" >
+            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -365,7 +365,7 @@
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-               @RenderBody()
+                @RenderBody()
                 <!-- /.container-fluid -->
 
             </div>
@@ -421,12 +421,12 @@
     <script src="/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    @*<script src="~/vendor/chart.js/Chart.min.js"></script>*@
+    <script src="~/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    @*<script src="/js/demo/chart-area-demo.js"></script>
-    <script src="/js/demo/chart-pie-demo.js"></script>*@
-
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>
