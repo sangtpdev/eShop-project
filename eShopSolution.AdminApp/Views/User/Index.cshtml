@@ -5,7 +5,13 @@
     ViewData["Title"] = "Danh sách người dùng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section Scripts{ 
+    <script>
+        setTimeout(function () {
+            $('#msgAlert').fadeOut('slow');
+        }, 3000);
+    </script>
+}
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -14,11 +20,34 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">
-                <a class="btn btn-success" asp-controller="User" asp-action="Create">Tạo mới</a>
-            </h6>
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <a class="btn btn-success" asp-controller="User" asp-action="Create">Tạo mới</a>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <form asp-action="Index" method="get">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" value="@ViewBag.Keyword" name="keyword" placeholder="Search" />
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" onclick="window.location.href='/User/Index'" class="btn btn-info">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="card-body">
+            @if (ViewBag.SuccessMsg != null)
+            {
+                <div id="msgAlert" class="alert alert-success" role="alert">
+                    @ViewBag.SuccessMsg
+                </div>
+            }
             <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
@@ -38,7 +67,7 @@
                             <th>
                                 Email
                             </th>
-                            <th  style="text-align: center">
+                            <th style="text-align: center">
                                 Action
                             </th>
                         </tr>
